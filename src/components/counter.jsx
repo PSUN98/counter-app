@@ -1,14 +1,14 @@
 import React, { Component } from 'react';//type imrc + tab = import react component
 
 class Counter extends Component { //type cc + tab = create class
-   //props=data we give to a component/ read only
-   //state=data that is local/internal to a component (other components cannot access)
-   // state={
-        //value:this.props.counter.value
-        //tags: ['tag1', 'tag2', 'tag3']
+    //props=data we give to a component/ read only
+    //state=data that is local/internal to a component (other components cannot access)
+    // state={
+    //value:this.props.counter.value
+    //tags: ['tag1', 'tag2', 'tag3']
 
     //};//state object includes any data that this component needs
-   
+
     //constructor(){//so that handleIncrement has access to this
     //    super();
     //    this.handleIncrement=this.handleIncrement.bind(this);
@@ -17,8 +17,8 @@ class Counter extends Component { //type cc + tab = create class
     //handleIncrement = () => {
     //    this.setState({value: this.state.value +1});
     //    console.log('Increment clicked');
-        //obj.method();
-        //function();
+    //obj.method();
+    //function();
     //};
 
     //dohandleIncrement = () => {
@@ -32,9 +32,9 @@ class Counter extends Component { //type cc + tab = create class
     //</ul>;
     //};
 
- 
 
-    render() { 
+
+    render() {
         console.log(this.props);//props refer to value and id defined in counters
 
         //react.createElement only take 1 object as argument. h1 and button must be wrapped in div.
@@ -47,22 +47,29 @@ class Counter extends Component { //type cc + tab = create class
 
 
         return (//use map method to render a list of item. Key must be unique
-        <React.Fragment> 
-            {this.props.children}
-            <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-            <button 
-                //onClick={this.handleIncrement} //use ()=> when u want to pass this.<> into function
-                onClick={()=> this.props.onIncrement(this.props.counter)}
-                className="btn btn-secondary btm-sm"
+            <React.Fragment>
+                {this.props.children}
+                <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+                <button
+                    //onClick={this.handleIncrement} //use ()=> when u want to pass this.<> into function
+                    onClick={() => this.props.onIncrement(this.props.counter)}
+                    className="btn btn-secondary btm-sm m-2"
                 >
-                Increment
-            </button>
-            <button onClick={ ()=> this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-sm m-2">Delete</button>
-            
+                    Increase
+                </button>
+                <button
+                    onClick={() => this.props.onDecrease(this.props.counter)}
+                    className="btn btn-secondary btm-sm m-2"
+                >
+                    Decrease
+                </button>
 
-        </React.Fragment>
-        //{this.state.tags.length ===0 && <p>Please create new tag</p>}
-        //{this.renderTags()}
+                <button onClick={() => this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-sm m-2">Delete</button>
+
+
+            </React.Fragment>
+            //{this.state.tags.length ===0 && <p>Please create new tag</p>}
+            //{this.renderTags()}
 
         );
     }
@@ -75,10 +82,10 @@ class Counter extends Component { //type cc + tab = create class
 
     formatCount() {//function to return zero as a string
         //const {value: count} = this.state;
-        const {value} =this.props.counter;
+        const { value } = this.props.counter;
         return value === 0 ? 'Zero' : value;//h1 expressions behaves like a normal js object, it can be passed thru function etc.
 
     };
 }
- 
+
 export default Counter;
